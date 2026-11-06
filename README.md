@@ -10,12 +10,6 @@
 
 > [第一次提交成绩](https://github.com/rosickey/verilog-homework-2026/tree/main/grades/registration-grades.md)
 
-## 以下同学未提交
-
-| 学号 | 姓名 | 班级 |
-| --- | --- | --- |
-| 240210233 | 李俊杰 | 2402102 |
-
 ## [第一次作业HW01](https://github.com/rosickey/verilog-homework-2026/tree/main/assignments/HW01)
 
 - 1.作业严格按照文件名规则提交！
