@@ -8,7 +8,7 @@ reg         clr;
 wire [9:0]  q;
 
 clk_gen u1(clk);
-cd4017  u2(clk, en, clr, q);
+CD4017  u2(clk, en, clr, q);
 
 initial
 begin
