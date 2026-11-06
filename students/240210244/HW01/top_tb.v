@@ -14,7 +14,7 @@ module top_tb;
          #20
          clr = 0;
          en = 0;
-         #120
+         #220
          en = 1;
          #30
          clr = 1;
