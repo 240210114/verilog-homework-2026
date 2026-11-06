@@ -1,7 +1,7 @@
 module cd4017(clk,en,clr,q);
 		input	clk,en,clr;
 		output	reg[9:0]	q;
-		always@(posedge	clk)
+		always@(posedge clk)
 		begin
 				if(clr)
 					q<=10'b0000000001;
