@@ -1,4 +1,5 @@
-module CD4017(clk, en, clr, q);
+`timescale 1ns/1ps
+module cd4017(clk, en, clr, q);
     input clk;
     input en;
     input clr;
