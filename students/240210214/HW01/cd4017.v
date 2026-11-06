@@ -1,20 +1,16 @@
 module cd4017(clk, clr, en, q);
-    input clk, clr, en;
-    output [9:0] q;
-    reg [3:0] count;
+  input clk;
+  input clr;
+  input en;
+  output [9:0] q;
+  reg [9:0] q;
 
-    always@(posedge clk or posedge clr)
-    begin
-        if(clr)
-            count <= 4'd0;
-        else if(en)
-        begin
-            if(count == 4'd9)
-                count <= 4'd0;
-            else
-                count <= count + 1'd1;
-        end
-    end
+  always @(posedge clk or posedge clr)
+  begin
+    if (clr == 1'b1)
+      q <= 10'b0000000001;
+    else if (en == 1'b1)
+      q <= {q[8:0], q[9]};
+  end
 
-    assign q = 10'b0000_0000_01 << count;
 endmodule
