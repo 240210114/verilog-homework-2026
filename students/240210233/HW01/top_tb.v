@@ -1,24 +1,23 @@
-Enter file contents here
 module top_tb;
 	wire clk;
-	reg en, clr;
+	reg en;
+	reg clr;
 	wire[9:0] q;
 	
-	clk_gen u_clk(.clk(clk));
-	cd4017 u_cd4017(
-		.clk(clk),
-		.en(en),
-		.clr(clr),
-		.q(q)
-	);
+	clk_gen u_clk(clk);
+	cd4017 u_cd4017(clk,en,clr,q);
 	
-	initial begin
-		clr = 1'b1;
-		en = 1'b0;
-		#12;
-		clr = 1'b0;
-		en = 1'b1;
-		#200;
-		$finish;
+	initial
+	begin
+		$dumpfile("top_tb.vcd");
+		$dumpvars();
+		en=1;
+		clr=1;
+		#25 clr=0;
+		#180 en=0;
+		#70 en=1;
+		#70 clr=1;
+		#20 clr=0;
+		#50 $finish();
 	end
 endmodule
