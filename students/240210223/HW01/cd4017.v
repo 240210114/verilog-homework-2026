@@ -1,34 +1,29 @@
-module cd4017(
-    clk,
-    en,
-    clr,
-    q
-);
-
-input        clk;
-input        en;
-input        clr;
+module cd4017(clk, en, clr, q);
+input clk;
+input en;
+input clr;
 output [9:0] q;
-
-reg [4:0] cnt;
+reg [9:0] q;
 
 always @(posedge clk or posedge clr)
+begin
+    if (clr)
+        q <= 10'b0000000001;
+    else if (en)
     begin
-        if (clr)
-            cnt <= 5'b00000;
-        else if (en)
-            cnt <= {~cnt[0], cnt[4:1]};
+        case (q)
+            10'b0000000001: q <= 10'b0000000010;
+            10'b0000000010: q <= 10'b0000000100;
+            10'b0000000100: q <= 10'b0000001000;
+            10'b0000001000: q <= 10'b0000010000;
+            10'b0000010000: q <= 10'b0000100000;
+            10'b0000100000: q <= 10'b0001000000;
+            10'b0001000000: q <= 10'b0010000000;
+            10'b0010000000: q <= 10'b0100000000;
+            10'b0100000000: q <= 10'b1000000000;
+            10'b1000000000: q <= 10'b0000000001;
+            default:        q <= 10'b0000000001;
+        endcase
     end
-
-assign q[0] = ~cnt[4] & ~cnt[3] & ~cnt[2] & ~cnt[1] & ~cnt[0];
-assign q[1] =  cnt[4] & ~cnt[3] & ~cnt[2] & ~cnt[1] & ~cnt[0];
-assign q[2] =  cnt[4] &  cnt[3] & ~cnt[2] & ~cnt[1] & ~cnt[0];
-assign q[3] =  cnt[4] &  cnt[3] &  cnt[2] & ~cnt[1] & ~cnt[0];
-assign q[4] =  cnt[4] &  cnt[3] &  cnt[2] &  cnt[1] & ~cnt[0];
-assign q[5] =  cnt[4] &  cnt[3] &  cnt[2] &  cnt[1] &  cnt[0];
-assign q[6] = ~cnt[4] &  cnt[3] &  cnt[2] &  cnt[1] &  cnt[0];
-assign q[7] = ~cnt[4] & ~cnt[3] &  cnt[2] &  cnt[1] &  cnt[0];
-assign q[8] = ~cnt[4] & ~cnt[3] & ~cnt[2] &  cnt[1] &  cnt[0];
-assign q[9] = ~cnt[4] & ~cnt[3] & ~cnt[2] & ~cnt[1] &  cnt[0];
-
+end
 endmodule
