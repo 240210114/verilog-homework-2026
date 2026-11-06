@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 module cd4017(clk, clr, en, q);
   input clk;
   input clr;
