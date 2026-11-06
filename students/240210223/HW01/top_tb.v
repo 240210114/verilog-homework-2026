@@ -1,43 +1,43 @@
 module top_tb;
-wire clk;
-reg en;
-reg clr;
-wire [9:0] q;
-reg [3:0] idx;
+    wire clk;
+    reg en;
+    reg clr;
+    wire [9:0] q;
+    reg [3:0] idx;
 
-clk_gen u_clk_gen(clk);
-cd4017 u_cd4017(clk, en, clr, q);
+    clk_gen u_clk(clk);
+    CD4017 u_cd4017(clk, en, clr, q);
 
-always @(*)
-begin
-    case (q)
-        10'b0000000001: idx = 4'd0;
-        10'b0000000010: idx = 4'd1;
-        10'b0000000100: idx = 4'd2;
-        10'b0000001000: idx = 4'd3;
-        10'b0000010000: idx = 4'd4;
-        10'b0000100000: idx = 4'd5;
-        10'b0001000000: idx = 4'd6;
-        10'b0010000000: idx = 4'd7;
-        10'b0100000000: idx = 4'd8;
-        10'b1000000000: idx = 4'd9;
-        default:        idx = 4'd15;
-    endcase
-end
+    always @(*)
+    begin
+        case (q)
+            10'b0000000001: idx = 4'd0;
+            10'b0000000010: idx = 4'd1;
+            10'b0000000100: idx = 4'd2;
+            10'b0000001000: idx = 4'd3;
+            10'b0000010000: idx = 4'd4;
+            10'b0000100000: idx = 4'd5;
+            10'b0001000000: idx = 4'd6;
+            10'b0010000000: idx = 4'd7;
+            10'b0100000000: idx = 4'd8;
+            10'b1000000000: idx = 4'd9;
+            default:        idx = 4'd15;
+        endcase
+    end
 
-initial
-begin
-    $dumpfile("top_tb.vcd");
-    $dumpvars(0, top_tb);
-    $monitor("%5t  clk=%b en=%b clr=%b q=%b idx=%0d",
-             $time, clk, en, clr, q, idx);
-    clr = 1;
-    en  = 1;
-    #20  clr = 0;
-    #200 en  = 0;
-    #100 en  = 1;
-    #120 clr = 1;
-    #20  clr = 0;
-    #340 $finish;
-end
+    initial
+    begin
+        $dumpfile("top_tb.vcd");
+        $dumpvars(0, top_tb);
+        $monitor("%5t  clk=%b en=%b clr=%b q=%b idx=%0d",
+                 $time, clk, en, clr, q, idx);
+        clr = 1;
+        en  = 1;
+        #20  clr = 0;
+        #200 en  = 0;
+        #100 en  = 1;
+        #120 clr = 1;
+        #20  clr = 0;
+        #200 $finish;
+    end
 endmodule
