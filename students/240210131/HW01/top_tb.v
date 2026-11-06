@@ -1,7 +1,8 @@
 module top_tb;
-    wire       clk;
-    reg        clr;
-    reg        en;
+    wire clk;
+    reg clr;
+    reg en;
+
     wire [9:0] q;
 
     clk_gen u_clk_gen(clk);
@@ -11,10 +12,12 @@ module top_tb;
     initial
     begin
         clr = 1'b1;
-        en  = 1'b1;
-        #35 clr = 1'b0;
+        en = 1'b1;
+        #35;
+        clr = 1'b0;
 
-        #400 $finish;
+        #400;
+        $finish;
     end
 
     initial
