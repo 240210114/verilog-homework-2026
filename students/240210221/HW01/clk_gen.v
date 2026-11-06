@@ -1,14 +1,8 @@
-module clk_gen(
-    output clk
-);
-
-reg clk_reg;
-
-initial begin
-    clk_reg = 1'b0;
-    forever #5 clk_reg = ~clk_reg;
+module clk_gen(clk);
+	output reg clk;
+initial
+begin
+	clk=0;
+	forever #10 clk=~clk;
 end
-
-assign clk = clk_reg;
-
 endmodule
