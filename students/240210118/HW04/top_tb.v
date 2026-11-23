@@ -4,11 +4,11 @@ wire clk_25;        // 周期 20，占空比 25%（频率不变，只改占空�
 wire clk_75;        // 周期 20，占空比 75%
 wire clk_slow;      // 周期 40，占空比 50%（占空比不变，只改频率）
 
-// 频率可调：改 PERIOD；占空比可调：改 DUTY
-clk_gen_0 #(.PERIOD(20), .DUTY(50)) u_clk_50  (clk_50);
-clk_gen_0 #(.PERIOD(20), .DUTY(25)) u_clk_25  (clk_25);
-clk_gen_0 #(.PERIOD(20), .DUTY(75)) u_clk_75  (clk_75);
-clk_gen_0 #(.PERIOD(40), .DUTY(50)) u_clk_slow(clk_slow);
+// 频率由 PERIOD 决定，占空比由 DUTY 决定
+clk_gen_o #(.PERIOD(20), .DUTY(50)) u_clk_50  (clk_50);
+clk_gen_o #(.PERIOD(20), .DUTY(25)) u_clk_25  (clk_25);
+clk_gen_o #(.PERIOD(20), .DUTY(75)) u_clk_75  (clk_75);
+clk_gen_o #(.PERIOD(40), .DUTY(50)) u_clk_slow(clk_slow);
 
 initial
 begin
