@@ -10,7 +10,7 @@ module clk_gen_o(zkb,zq,clk);
 		forever
 		begin
 			high=zq*zkb/100;
-			#(zkb-high) clk=1;
+			#(zq-high) clk=1;
 			#(high) clk=0;
 		end
 	end
