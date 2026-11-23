@@ -1,16 +1,16 @@
-module clk_gen_o(clk);
-	parameter HIGH = 10;
-	parameter LOW = 10;
+module clk_gen_o(zkb, zq, clk);
+	input [7:0] zkb;
+	input [7:0] zq;
 	output clk;
 	reg clk;
 
 	initial
 	begin
-		clk = 1;
+		clk = 0;
 		forever
 		begin
-			#HIGH clk = 0;
-			#LOW clk = 1;
+			#(zq - zkb) clk = 1;
+			#zkb clk = 0;
 		end
 	end
 endmodule
