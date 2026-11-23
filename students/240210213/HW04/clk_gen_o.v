@@ -1,23 +1,22 @@
-module clk_gen
-#(
-    parameter FREQ        = 50,   
-    parameter DUTY_RATIO  = 0.5    
-)
-(
-    output reg clk
-);
-localparam TOTAL_PERIOD = 1000 / FREQ;
-localparam T_HIGH       = TOTAL_PERIOD * DUTY_RATIO;
-localparam T_LOW        = TOTAL_PERIOD - T_HIGH;
+module clk_gen;
+    input  [7:0] zkb;   
+    input  [7:0] zq;    
+    output reg   clk;
 
-initial begin
-    clk = 1'b0;
-    forever begin
-        clk <= 1'b1;
-        #(T_HIGH);
-        clk <= 1'b0;
-        #(T_LOW);
+    real period;
+    real high_time;
+
+    initial begin
+        clk = 1'b0;
+        forever begin
+            period    = zkb * 2;
+            high_time = period * (zq / 255.0);
+
+            clk <= 1'b1;
+            #(high_time);
+            clk <= 1'b0;
+            #(period - high_time);
+        end
     end
-end
 
 endmodule
