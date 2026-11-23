@@ -1,6 +1,6 @@
 module clk_gen_o(zkb, zq, clk);
-	input [7:0] zkb;
-	input [7:0] zq;
+	input [7:0] zkb;	// 高电平时间(ns)
+	input [7:0] zq;		// 周期(ns)
 	output clk;
 	reg clk;
 
