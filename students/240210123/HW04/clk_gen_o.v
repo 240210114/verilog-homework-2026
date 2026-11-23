@@ -1,8 +1,8 @@
 `timescale 1ns / 1ns
 
 module clk_gen_o(zkb, zq, clk);
-input  [7:0] zkb;         // 占空比控制：高电平占周期的百分比（1~100）
-input  [7:0] zq;          // 周期控制：一个周期的时长（单位ns）
+input  [7:0] zkb;
+input  [7:0] zq;
 output clk;
 reg    clk;
 
