@@ -1,20 +1,26 @@
 `timescale 1ns/1ps
-module clk_gen_o(clk);
+module clk_gen_o(zkb, zq, clk);
+	input [7:0] zkb;
+	input [7:0] zq;
 	output clk;
 	reg clk;
-
-	parameter PERIOD = 20;
-	parameter DUTY = 50;
-	parameter HIGH_TIME = PERIOD * DUTY / 100;
-	parameter LOW_TIME = PERIOD - HIGH_TIME;
+	integer high;
+	integer low;
 
 	initial
 	begin
 		clk <= 0;
-		forever
-		begin
-			#(LOW_TIME) clk <= 1;
-			#(HIGH_TIME) clk <= 0;
-		end
+	end
+
+	always
+	begin
+		high = zq * zkb / 100;
+		if (high < 1)
+			high = 1;
+		if (high > zq - 1)
+			high = zq - 1;
+		low = zq - high;
+		#(low) clk <= 1;
+		#(high) clk <= 0;
 	end
 endmodule
