@@ -10,32 +10,20 @@
 
 > [第一次提交成绩](https://github.com/rosickey/verilog-homework-2026/tree/main/grades/registration-grades.md)
 
-## [第一次作业HW01](https://github.com/rosickey/verilog-homework-2026/tree/main/assignments/HW01)
+## [第一次作业](https://github.com/rosickey/verilog-homework-2026/tree/main/assignments/HW01)
 
 > [HW01成绩](https://github.com/rosickey/verilog-homework-2026/tree/main/grades/HW01-grades.md)
 
 ## [第二次作业](https://github.com/rosickey/verilog-homework-2026/tree/main/assignments/HW02)
 
+> [HW02成绩](https://github.com/rosickey/verilog-homework-2026/tree/main/grades/HW02-grades.md)
+
+## [第三次作业](https://github.com/rosickey/verilog-homework-2026/tree/main/assignments/HW03)
+
 - 1.作业严格按照文件名规则提交！
 - 2.代码风格严格按照课本统一标准。例如，**不能使用“.” .clk这种形式表示参量** **不能使用“.” .clk这种形式表示参量** **不能使用“.” .clk这种形式表示参量**
 - 3.不符合merge合并都已经reverse撤销
 - 4.请严格按照上述要求修改，检查后，再次慎重提交PR
-
-## 未通过的 PR
-
-| PR | 学号 | 姓名 | 作业 | 原因 |
-| --- | --- | --- | --- | --- |
-| 315 | 240210245 | 占立威 | HW02 | 未选择的作业目录或非作业路径：students/240210245/HW01/cd4017.v |
-| 348 | 240210120 | 张健华 | HW02 | HW02 缺少必交文件：students/240210120/HW02/cd4017.v；HW02 缺少必交文件：students/240210120/HW02/clk_gen.v；HW02 缺少必交文件：students/240210120/HW02/led.v；HW02 缺少必交文件：students/240210120/HW02/top_tb.v |
-| 356 | 240210123 | 刘廷滔 | HW02 | 未选择的作业目录或非作业路径：students/240210123/cd4017.v |
-| 358 | 240210144 | 谢坤键 | HW02 | 来源分支必须是本人的九位学号，不能使用 main、patch-1 或 HW01 等分支 |
-| 360 | 240210207 | 万佳丽 | HW02 | 文件名不在 HW02.allowed_files 列表中（重命名原路径也须符合）：students/240210207/HW02/top.v |
-| 366 | 240210235 | 胡志斌 | HW02 | 未选择的作业目录或非作业路径：students/240210235/HW01/cd4017.v |
-| 367 | 240210103 | 袁露南 | HW02 | 未选择的作业目录或非作业路径：students/240210103/students/240210103/HW02/cd4017.v |
-| 378 | 240210107 | 陈芷颖 | HW02 | 未选择的作业目录或非作业路径：students/240210107/students/240210107/HW02/cd4017.v |
-| 380 | 240210130 | 王庆丰 | HW02 | 未选择的作业目录或非作业路径：students/240210130/HW01/cd4017.v |
-| 386 | 240210237 | 沈强 | HW02 | 只能修改本人学号目录，禁止修改他人目录或公共文件：students/HW02/HW02.png |
-
 
 ## 一、必须遵守的规则
 
