@@ -1,15 +1,22 @@
-module clk_gen_o(clk);
-    parameter PERIOD = 20;
-    parameter DUTY = 50;
-    output reg clk;
+module clk_gen;
+    input  [7:0] zkb;   
+    input  [7:0] zq;    
+    output reg   clk;
 
-    initial
-    begin
-        clk = 0;
-        forever
-        begin
-            #(PERIOD*(100-DUTY)/100) clk = 1;
-            #(PERIOD*DUTY/100) clk = 0;
+    real period;
+    real high_time;
+
+    initial begin
+        clk = 1'b0;
+        forever begin
+            period    = zkb * 2;
+            high_time = period * (zq / 255.0);
+
+            clk <= 1'b1;
+            #(high_time);
+            clk <= 1'b0;
+            #(period - high_time);
         end
     end
+
 endmodule
