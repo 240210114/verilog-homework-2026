@@ -1,38 +1,27 @@
-`timescale 1ns/1ns
 module top_tb;
-wire clk;
-reg rst;
-
-wire [9:0] q0;    
-wire [9:0] q1;   
-wire carry0;     
-
-clk_gen u_clk(
-    .clk(clk)
-);
-
-cd4017 u_low(
-    .clk(clk),
-    .rst(rst),
-    .ci(1'b0),
-    .q(q0),
-    .carry_out(carry0)
-);
-
-
-cd4017 u_high(
-    .clk(carry0),
-    .rst(rst),
-    .ci(1'b0),
-    .q(q1)
-);
-initial begin
-    $dumpfile("wave.vcd");
-    $dumpvars(0,top_tb);
-    rst = 1'b1;
-    #20;
-    rst = 1'b0;
-    #2000; 
-    $finish;
-end
+	wire clk;
+	reg reset;
+	reg inhibit;
+	wire clk_tens;
+	wire cout_unit;
+	wire cout_tens;
+	wire [9:0] q_unit;
+	wire [9:0] q_tens;
+	
+	clk_gen u_clk(clk);
+	cd4017 u_cd4017_unit(clk,reset,inhibit,cout_unit,q_unit);
+	cd4017 u_cd4017_tens(clk_tens,reset,inhibit,cout_tens,q_tens);
+	assign clk_tens=~cout_unit;
+	
+	initial
+	begin
+		$dumpfile("top_tb.vcd");
+		$dumpvars();
+		reset=1;
+		inhibit=0;
+		#25 reset=0;
+		#980 inhibit=1;
+		#100 inhibit=0;
+		#1020 $finish();
+	end
 endmodule

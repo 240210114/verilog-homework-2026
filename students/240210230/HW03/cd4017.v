@@ -1,20 +1,21 @@
-`timescale 1ns/1ns
-module cd4017(
-    input clk,
-    input rst,
-    input ci,
-    output reg [9:0] q,
-    output carry_out
-);
+module cd4017(clk,reset,inhibit,cout,q);
+	input clk,reset,inhibit;
+	output cout;
+	output [9:0] q;
+	reg [3:0] count;
 
-assign carry_out = (q[4]|q[5]|q[6]|q[7]|q[8]|q[9]) ? 1'b0 : 1'b1;
-
-always @(posedge clk or posedge rst) begin
-    if(rst) begin
-        q <= 10'b0000000001;
-    end
-    else if(ci == 1'b0) begin
-        q <= {q[8:0], q[9]};
-    end
-end
+	always@(posedge clk or posedge reset)
+	begin
+		if(reset)
+			count<=0;
+		else if(!inhibit)
+		begin
+			if(count==9)
+				count<=0;
+			else
+				count<=count+1;
+		end
+	end
+	assign q=10'b0000_0000_01<<count;
+	assign cout=!(count<9);
 endmodule
