@@ -1,6 +1,3 @@
-// clk_gen_o.v
-// 频率、占空比可调的方波发生器（课堂订正版）
-// zq：周期（ns）；zkb：占空比参数（%）；clk：输出方波
 module clk_gen_o(zkb,zq,clk);
 	input [7:0] zkb;
 	input [7:0] zq;
